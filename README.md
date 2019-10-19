@@ -24,7 +24,7 @@
 4. JIRA Toolbox: 实时抓去、同步JIRA各个Scrum Board数据，用于团队统计迭代的各项指标，评估迭代的成效
 
 ## 4. Demo Data
-所有演示数据都存放于 /example 目录下，经过了脱敏，可用于向任何成员演示，实际生产中，可按照 /example下的数据结构向前端返回真实数据即可.
+所有演示数据都存放于 /example 目录下，仅供效果演示，实际生产中，可按照 /example下的数据结构向前端返回真实数据即可.
 **由于所有数据都只用于演示，运行无需安装Database或者其他SDK，只需要有NodeJS环境，version > 8.0即可。**
 
 ### 4.1 Sprint Center 演示原理: 
