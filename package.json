@@ -1,0 +1,24 @@
+{
+  "name": "scrum.jira",
+  "version": "1.0.0",
+  "author": "ant.ren",
+  "description": "scrum jira platform",
+  "private": true,
+  "scripts": {},
+  "keywords": [
+    "scrum, jira"
+  ],
+  "dependencies": {
+    "axios": "^0.19.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-ejs": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^4.1.0",
+    "moment": "^2.24.0",
+    "socket.io": "^2.2.0"
+  }
+}

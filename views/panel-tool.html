@@ -1,0 +1,60 @@
+<section class="content" ng-show="activeTab.key=='tool'">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-primary" id="sprintStoryReview">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sprint Story Review</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                        <input type="text" ng-model="tool.sprintStoryReview.sprint" class="form-control" placeholder="Sprint Name...">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" ng-model="tool.sprintStoryReview.key" class="form-control" placeholder="Project Key...">
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary pull-right" ng-click="callTool('sprintStoryReview')"><i class="fa fa-globe margin-r-5"></i> Check JIRA</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="box box-primary" id="sprintTaskReview">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sprint Task Review</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                        <input type="text" ng-model="tool.sprintTaskReview.sprint" class="form-control" placeholder="Sprint Name...">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" ng-model="tool.sprintTaskReview.key" class="form-control" placeholder="Project Key...">
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary pull-right" ng-click="callTool('sprintTaskReview')"><i class="fa fa-globe margin-r-5"></i> Check JIRA</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="box box-primary" id="sprintBugReview">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sprint Bug Review</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                        <input type="text" ng-model="tool.sprintBugReview.sprint" class="form-control" placeholder="Sprint Name...">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" ng-model="tool.sprintBugReview.key" class="form-control" placeholder="Project Key...">
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary pull-right" ng-click="callTool('sprintBugReview')"><i class="fa fa-globe margin-r-5"></i> Check JIRA</button>
+                </div>
+            </div>
+        </div>
+    <!-- /.row -->
+</section>

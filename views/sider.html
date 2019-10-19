@@ -1,0 +1,24 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="/img/logo-sos.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Scrum Team</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Scrum Master</a>
+        </div>
+      </div>
+      
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN MENU</li>
+
+        <li ng-repeat="tab in tabList" ng-class="{true:'active'}[activeTab.key===tab.key]">
+            <a ng-click="switchTab(tab)" id="{{tab.key}}SideTab">
+                <i class="fa {{tab.icon}}"></i> <span>{{tab.name}}</span>
+            </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

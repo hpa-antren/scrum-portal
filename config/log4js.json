@@ -1,0 +1,25 @@
+{
+    "appenders": {
+      "console": { "type": "console" },
+      "app": {
+        "type": "dateFile",
+        "filename": "logs/scrum-app",
+        "pattern": "yyyy-MM-dd.log",
+        "alwaysIncludePattern": true
+      },
+      "errorFile": {
+        "type": "file",
+        "filename": "logs/scrum-error.log",
+        "maxLogSize": 104800,
+        "backups": 30
+      },
+      "errors": {
+        "type": "logLevelFilter",
+        "level": "ERROR",
+        "appender": "errorFile"
+      }
+    },
+    "categories": {
+      "default": { "appenders": [ "app", "errors", "console"], "level": "INFO" }
+    }
+  }

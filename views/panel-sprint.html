@@ -1,0 +1,178 @@
+<section class="content" ng-show="activeTab.key=='sprint'">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#sprintPlanPan" data-toggle="tab"><i class="fa fa-calculator margin-r-5"></i>  Sprint Calculator</a></li>  
+        <li><a href="#scrumBoardPan" data-toggle="tab"><i class="fa fa-dashboard margin-r-5"></i> Scrum Board</a></li>
+      </ul>
+      <div class="tab-content">
+      <div class="tab-pane" id="scrumBoardPan">
+        Demo Your Scrum Team KPI / Statistic Here
+      </div>
+
+      <div class="tab-pane active" id="sprintPlanPan">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box box-primary" id="spCalBox">
+              <div class="box-header with-border">
+                <h4>Sprint Plan Calculator <strong class="icon icon-default" ng-show="spCal.id">: {{spCal.id}}</strong>
+                  <a class="btn btn-sm btn-success pull-right" ng-show="spMode=='review'" ng-click="loadSPHistory()"><i class="fa fa-history margin-r-5"></i> Load History</a></h4>
+              </div>
+
+              <div class="box-body">
+                <div class="form-group input-group">
+                  <span class="input-group-addon" title="Sprint Name"><i class="fa fa-flag"></i></span>
+                  <input type="text" ng-model="spCal.sprint" class="form-control" placeholder="Sprint...">
+    
+                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                  <input type="text" ng-model="spCal.key" class="form-control" placeholder="Team Key...">
+                </div>
+    
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-bar-chart"></i></span>
+                  <input type="text" ng-model="spCal.days" class="form-control" placeholder="Total Person-Days...">
+                  <span class="input-group-addon"><i class="fa fa-comments"></i></span>
+                  <input type="text" ng-model="spCal.meeting" class="form-control" placeholder="Meeting Days...">
+                </div>
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <input type="text" ng-model="spCal.leave" class="form-control" placeholder="Leave Days..." readonly>
+                  <span class="input-group-addon"><i class="fa fa-coffee"></i></span>
+                  <input type="text" ng-model="spCal.buf" class="form-control" placeholder="Buffer Days..." readonly>
+                </div>
+                
+                <p>
+                  <label class="label label-primary"><i class="fa fa-send-o margin-r-5"></i> =&nbsp;&nbsp;&nbsp;&nbsp;Front</label>
+                  <label class="label label-primary"><i class="fa fa-send margin-r-5"></i> =&nbsp;&nbsp;&nbsp;&nbsp;Back</label>
+                  <label class="label label-primary"><i class="fa fa-bug margin-r-5"></i> =&nbsp;&nbsp;&nbsp;&nbsp;QA</label>
+                  <label class="label label-primary"><i class="fa fa-mobile margin-r-5"></i> =&nbsp;&nbsp;&nbsp;&nbsp;APP</label>
+                </p>
+
+                <h5>Persons: <strong class="pull-right icon-red" ng-show="spCal.pointTotal != 0"><i class="fa fa-beer margin-r-5"></i> Point: {{spCal.pointTotal}}</strong></h5>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                  <input type="text" ng-model="spCal.front.total" class="form-control" placeholder="Front">
+                  <span class="input-group-addon"><i class="fa fa-send"></i></span>
+                  <input type="text" ng-model="spCal.back.total" class="form-control" placeholder="Back">
+                  <span class="input-group-addon"><i class="fa fa-bug"></i></span>
+                  <input type="text" ng-model="spCal.qa.total" class="form-control" placeholder="QA">
+                  <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                  <input type="text" ng-model="spCal.app.total" class="form-control" placeholder="App">
+                </div>
+                
+                <h5>Buffer Days: </h5>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                  <input type="text" ng-model="spCal.front.buf" ng-change="spCalBuffer()" class="form-control" placeholder="Buffer">
+                  <span class="input-group-addon"><i class="fa fa-send"></i></span>
+                  <input type="text" ng-model="spCal.back.buf" ng-change="spCalBuffer()" class="form-control" placeholder="Buffer">
+                  <span class="input-group-addon"><i class="fa fa-bug"></i></span>
+                  <input type="text" ng-model="spCal.qa.buf" ng-change="spCalBuffer()" class="form-control" placeholder="Buffer">
+                  <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                  <input type="text" ng-model="spCal.app.buf" ng-change="spCalBuffer()" class="form-control" placeholder="Buffer">
+                </div>
+                
+                <h5>Leave Days: </h5>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                  <input type="text" ng-model="spCal.front.leave" ng-change="spCalLeave()" class="form-control" placeholder="Leave">
+                  <span class="input-group-addon"><i class="fa fa-send"></i></span>
+                  <input type="text" ng-model="spCal.back.leave" ng-change="spCalLeave()" class="form-control" placeholder="Leave">
+                  <span class="input-group-addon"><i class="fa fa-bug"></i></span>
+                  <input type="text" ng-model="spCal.qa.leave" ng-change="spCalLeave()" class="form-control" placeholder="Leave">
+                  <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                  <input type="text" ng-model="spCal.app.leave" ng-change="spCalLeave()" class="form-control" placeholder="Leave">
+                </div>
+    
+                <h5>Consume: <strong ng-show="spCal.cost>0">{{spCal.cost}}</strong></h5>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                  <input type="text" ng-model="spCal.front.cost" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-send"></i></span>
+                  <input type="text" ng-model="spCal.back.cost" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-bug"></i></span>
+                  <input type="text" ng-model="spCal.qa.cost" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                  <input type="text" ng-model="spCal.app.cost" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                </div>
+
+                <h5>Capacity: <strong ng-show="spCal.cap>0">{{spCal.cap}}</strong></h5>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                  <input type="text" ng-class="{true: 'icon-red'}[(spCal.front.cap - spCal.front.cost) < 0]" ng-model="spCal.front.cap" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-send"></i></span>
+                  <input type="text" ng-class="{true: 'icon-red'}[(spCal.back.cap - spCal.back.cost) < 0]" ng-model="spCal.back.cap" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-bug"></i></span>
+                  <input type="text" ng-class="{true: 'icon-red'}[(spCal.qa.cap - spCal.qa.cost) < 0]" ng-model="spCal.qa.cap" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                  <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                  <input type="text" ng-class="{true: 'icon-red'}[(spCal.app.cap - spCal.app.cost) < 0]" ng-model="spCal.app.cap" ng-change="spCalLeave()" class="form-control" placeholder="Total" readonly>
+                </div>
+              </div>
+
+              <div class="box-footer">
+                <button class="btn btn-default margin-r-5" ng-show="spMode=='history'" ng-click="loadSPCal()"><i class="fa fa-globe margin-r-5"></i> Load JIRA</button>
+                <button class="btn btn-success" ng-show="spMode=='review'" ng-click="doSPCal()"><i class="fa fa-lock margin-r-5"></i> Calculate</button>
+
+                <button class="btn btn-primary pull-right" ng-show="spMode=='review'" ng-click="syncSPCal()"><i class="fa fa-refresh margin-r-5"></i> Sync JIRA</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <table class="table table-hover" ng-show="spMode=='history'">
+              <thead>
+                <tr>
+                  <th>#</th><th>KEY</th><th>Sprint</th><th>Days</th><th>Meeting</th><th>Leave</th>
+                  <th>Buffer</th><th>Point</th><th>Capacity</th><th>Consume</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="h in spHistory">
+                  <td>{{h.id}}</td>
+                  <td>{{h.proKey}}</td>
+                  <td>{{h.sprint}}</td>
+                  <td>{{h.sprintDay}}</td>
+                  <td>{{h.meetingDay}}</td>
+                  <td>{{h.leaveDay}}</td>
+                  <td>{{h.bufferDay}}</td>
+                  <td>{{h.sprintTotal}}</td>
+                  <td>{{h.capacity}}</td>
+                  <td>{{h.consume}}</td>
+                  <td>
+                    <a class="label label-primary" ng-click="reloadSP(h)"><i class="fa fa-eye"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-hover" ng-show="spMode=='review'">
+              <thead>
+                <tr>
+                  <th>#</th><th>Summary</th><th>Point</th><th>Front</th><th>Back</th><th>QA</th><th>APP</th><th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="s in spList" ng-class="{'Bug': 'info'}[s.type]">
+                  <td><a target="_blank" ng-href="https://homepartners.atlassian.net/browse/{{s.key}}">{{s.key}}</a></td>
+                  <td width="55%">{{s.summary}}</td>
+                  <td>
+                    <label ng-show="s.type=='Bug'" class="label label-danger">Bug</label>
+                    <input ng-show="s.type=='Story'" type="text" ng-model="s.point" ng-change="calcPointTotal(s)" class="mini-txt">
+                  </td>
+                  <td><input type="text" ng-model="s.front" ng-change="spCalIssue(s)" class="mini-txt"/></td>
+                  <td><input type="text" ng-model="s.back" ng-change="spCalIssue(s)" class="mini-txt"/></td>
+                  <td><input type="text" ng-model="s.qa" ng-change="spCalIssue(s)" class="mini-txt"/></td>
+                  <td><input type="text" ng-model="s.app" ng-change="spCalIssue(s)" class="mini-txt"/></td>
+                  <td><input type="text" ng-model="s.total" class="mini-txt" readonly/></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- row -->
+</section>

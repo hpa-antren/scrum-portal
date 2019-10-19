@@ -1,0 +1,57 @@
+<section class="content" ng-show="activeTab.key=='product'">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="e in entryCount">
+      <div class="info-box">
+        <span class="info-box-icon {{e.color}}"><i class="fa {{e.icon}}"></i></span>
+        
+        <div class="info-box-content">
+          <span class="info-box-number">{{e.total}} {{e.name}}
+              <a class="pull-right" ng-click="filterEntry(e)"><i class="fa fa-search text-gray"></i></a>
+          </span>
+          <span class="info-box-body">PMP: <strong class="pull-right">{{e.pmp}}</strong></span>
+          <span class="info-box-body">Acquisition: <strong class="pull-right">{{e.acquisition}}</strong></span>
+          <span class="info-box-body">Common: <strong class="pull-right">{{e.common}}</strong></span>
+          <span class="info-box-body">DM: <strong class="pull-right">{{e.dm}}</strong></span>
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+  <div class="row">
+    <div class="col-lg-4">
+      <h4>Total: {{entryList.total}} Entrys</h4>
+    </div>
+    <div class="col-lg-8">
+      <div class="input-group input-group-md pull-right" style="width: 250px;">
+        <input type="text" class="form-control" placeholder="Search" ng-model="entryFilter">
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div ng-repeat="e in entryList.list | filter: {jenkins:entryFilter}" class="col-lg-2 col-xs-4 product-card">
+      <div>
+        <label>{{e.jenkins}}</label>
+        <p>
+          <i class="fa fa-globe margin-r-5"></i>: {{e.env}} / {{e.type}}
+          <br/>
+          <i class="fa fa-wrench margin-r-5"></i>: {{e.module}}<br/>
+          <i class="fa fa-key margin-r-5"></i>: {{e.key}}<br/>
+        </p>
+        <p style="white-space:nowrap">
+          <a target="_blank" class="margin-r-5"><i class="fa fa-gitlab text-danger"></i></a>
+          <a target="_blank" class="margin-r-5"><i class="fa fa-desktop text-aqua"></i></a>
+          
+          <span ng-show="e.healthCode" class="label label-success margin-r-5">{{e.healthCode}}</span>
+          <span ng-show="e.versionCode" class="label label-primary margin-r-5">{{e.versionCode}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+</section>
