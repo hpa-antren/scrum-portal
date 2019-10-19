@@ -1,4 +1,4 @@
-# <img src="https://github.com/hpa-antren/scrum-portal/blob/master/public/img/icon_agile.png?raw=true" width=48> Scrum Web Portal (基于JIRA的Scrum Process管控系统模板)
+# <img src="https://github.com/hpa-antren/scrum-portal/blob/master/public/img/icon_agile.png?raw=true" width=48> Scrum Portal (基于JIRA的Scrum Process系统模板)
 
 ## 1. Background
 需求来源于HPA团队本身，由于HPA使用JIRA Cloud管理项目，从需求承接、形成User Story、到开启迭代、拆分Dev Task、到迭代完成DevOps发布， 全程都在JIRA上完成。但团队在实施Scrum的过程中，总结发现使用JIRA实施敏捷的两个问题：
