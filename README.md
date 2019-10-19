@@ -41,7 +41,7 @@
 9. 最后点击[Sync JIRA]按钮，系统会自动讲评估完成（即Total>0）的任务自动同步回JIRA系统中，填写好Story Point以及Estimate Time（根据Total人天自动计算出来）
 10. 已经评估过的历史Sprint，可以使用[Load History]按钮，加载出来便于回顾总结
 
-<img src="https://code.shareworks.cn/ant.ren/scrum-platform/raw/master/example/sprint-calculator.png">
+<img src="https://github.com/hpa-antren/scrum-portal/blob/master/example/sprint-calculator.png?raw=true">
 
 ### 4.2 Release Center 演示原理: 
 演示数据只准备了2019年9月份的数据采样，请翻到日历的2019年9月查看效果。
@@ -50,12 +50,12 @@
 2. 所有发布分成三种类型：蓝色代表大版本发布[Prod]，绿色代表功能优化发布[Patch]，红色代表修复问题发布[Hotfix]
 3. 点击日历事件可以查阅从JIRA上拉取下来的发布详情，内容和对应的人员.
 
-<img src="https://code.shareworks.cn/ant.ren/scrum-platform/raw/master/example/release-calendar.png">
+<img src="https://github.com/hpa-antren/scrum-portal/blob/master/example/release-calendar.png?raw=true">
 
 ### 4.3 Product Center 演示原理：
 系统展示了所有线上已发布的应用分布统计情况，向团队展示整个Live应用的全貌，按照产品名、应用类型（前端、后端、AWS Lambda等）进行多维度的统计形成一个全局Live Application Dashboard.
 
-<img src="https://code.shareworks.cn/ant.ren/scrum-platform/raw/master/example/product-list.png">
+<img src="https://github.com/hpa-antren/scrum-portal/blob/master/example/product-list.png?raw=true">
 
 ### 4.4 JIRA Toolbox 演示原理：
 Scrum Web Portal自己研发了一套打通JIRA & Confluence的接口，基于JS语言，在真实环境只要自行配置Atlassian账号的username和API Token，即可开箱即用。
@@ -65,7 +65,7 @@ Scrum Web Portal自己研发了一套打通JIRA & Confluence的接口，基于JS
 
 JIRA Toolbox演示了从JIRA中按照Sprint名称以及面板所属的JIRA Project KEY分别拉取Story数据、Task数据以及Bug数据的效果，用于团队进行迭代回顾统计、迭代指标收集。
 
-<img src="https://code.shareworks.cn/ant.ren/scrum-platform/raw/master/example/jira-toolbox.png">
+<img src="https://github.com/hpa-antren/scrum-portal/blob/master/example/jira-toolbox.png?raw=true">
 
 ## 5. Tech Stack
 - NodeJS
